@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.widget.LinearLayout;
+import android.widget.FrameLayout;
 
 import com.ldf.calendar.Utils;
 import com.ldf.calendar.component.CalendarAttr;
@@ -82,7 +82,7 @@ public class CalendarPickerFragment extends Fragment implements OnSelectDateList
                     containerParams.height = monthPager.getCellHeight() + (int) (monthPager.getCellHeight() * 5 * fraction);
                     monthPagerContainer.setLayoutParams(containerParams);
 
-                    LinearLayout.LayoutParams childParams = (LinearLayout.LayoutParams) monthPager.getLayoutParams();
+                    FrameLayout.LayoutParams childParams = (FrameLayout.LayoutParams) monthPager.getLayoutParams();
                     childParams.topMargin = (int) (-monthPager.getTopMovableDistance() * (1 - fraction));
                     monthPager.setLayoutParams(childParams);
                 }
@@ -102,7 +102,7 @@ public class CalendarPickerFragment extends Fragment implements OnSelectDateList
                     containerParams.height = (int) (monthPager.getCellHeight() * (6 - 5 * fraction));
                     monthPagerContainer.setLayoutParams(containerParams);
 
-                    LinearLayout.LayoutParams childParams = (LinearLayout.LayoutParams) monthPager.getLayoutParams();
+                    FrameLayout.LayoutParams childParams = (FrameLayout.LayoutParams) monthPager.getLayoutParams();
                     childParams.topMargin = (int) (-fraction * monthPager.getTopMovableDistance());
                     monthPager.setLayoutParams(childParams);
                 }

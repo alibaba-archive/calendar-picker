@@ -44,7 +44,7 @@ public final class Utils {
         cal.setTime(date);
         CalendarDate calendarDate = new CalendarDate();
         calendarDate.year = cal.get(Calendar.YEAR);
-        calendarDate.month = cal.get(Calendar.MONTH + 1);
+        calendarDate.month = cal.get(Calendar.MONTH) + 1;
         calendarDate.day = cal.get(Calendar.DAY_OF_MONTH);
         return calendarDate;
     }
@@ -244,8 +244,8 @@ public final class Utils {
             c.add(Calendar.DAY_OF_MONTH, 7 - c.get(Calendar.DAY_OF_WEEK) + 1);
         }
         return new CalendarDate(c.get(Calendar.YEAR),
-                c.get(Calendar.MONTH) + 1,
-                c.get(Calendar.DAY_OF_MONTH));
+            c.get(Calendar.MONTH) + 1,
+            c.get(Calendar.DAY_OF_MONTH));
     }
 
     /**
@@ -267,8 +267,8 @@ public final class Utils {
         c.setTime(date);
         c.add(Calendar.DAY_OF_MONTH, 7 - c.get(Calendar.DAY_OF_WEEK));
         return new CalendarDate(c.get(Calendar.YEAR),
-                c.get(Calendar.MONTH) + 1,
-                c.get(Calendar.DAY_OF_MONTH));
+            c.get(Calendar.MONTH) + 1,
+            c.get(Calendar.DAY_OF_MONTH));
     }
 
     private static int top;
@@ -320,7 +320,7 @@ public final class Utils {
                     if (monthPager.getTop() < 0) {
                         if (monthPager.getTop() + monthPager.getTopMovableDistance() >= 0) {
                             monthPager.offsetTopAndBottom(-monthPager.getTop()
-                                    - monthPager.getTopMovableDistance());
+                                - monthPager.getTopMovableDistance());
                         } else {
                             monthPager.offsetTopAndBottom(-monthPager.getTop());
                         }

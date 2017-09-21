@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/calendar_picker_container"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -40,9 +39,14 @@
             android:text="六" />
     </LinearLayout>
 
-    <com.ldf.calendar.view.MonthPager
-        android:id="@+id/calendar_picker"
+    <FrameLayout
+        android:id="@+id/calendar_picker_container"
         android:layout_width="match_parent"
-        android:layout_height="270dp"
-        android:background="#fff" />
+        android:layout_height="wrap_content">
+        <com.ldf.calendar.view.MonthPager
+            android:id="@+id/calendar_picker"
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:background="#fff" />
+    </FrameLayout>
 </LinearLayout>
