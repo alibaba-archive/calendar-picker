@@ -74,7 +74,7 @@ public class CalendarViewAdapter extends PagerAdapter {
 
         if (calendars.get(position % calendars.size()) instanceof Calendar) {
             date = calendars.get(position % calendars.size()).getSeedDate();
-            Log.i("onPageSelected--Primary", date + "--" + position);
+
             notifyDataChanged(date);
 
             if (pickerListener != null) {

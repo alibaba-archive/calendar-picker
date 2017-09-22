@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.FrameLayout;
 
 import com.ldf.calendar.Utils;
@@ -27,6 +29,8 @@ import java.util.Date;
 public class CalendarPickerFragment extends Fragment implements OnSelectDateListener, PickerListener {
 
     private PickerListener pickerListener;
+
+    private boolean isShow = true;
 
     private ViewGroup monthPagerContainer;
     private MonthPager monthPager;
@@ -66,6 +70,25 @@ public class CalendarPickerFragment extends Fragment implements OnSelectDateList
             }
         });
     }
+
+    public void setCalendarIsVisible() {
+        if (isShow) {
+            Animation animation = new AlphaAnimation(1.0f, 0f);
+            animation.setDuration(200);
+            monthPagerContainer.setAnimation(animation);
+            monthPagerContainer.startAnimation(animation);
+            monthPagerContainer.setVisibility(View.GONE);
+            isShow = !isShow;
+        } else {
+            Animation animation = new AlphaAnimation(0f, 1.0f);
+            animation.setDuration(200);
+            monthPagerContainer.setAnimation(animation);
+            monthPagerContainer.startAnimation(animation);
+            monthPagerContainer.setVisibility(View.VISIBLE);
+            isShow = !isShow;
+        }
+    }
+
 
     public void changeMode() {
         if (calendarAdapter.getCalendarType() == CalendarAttr.CalendarType.WEEK) {

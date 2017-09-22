@@ -8,8 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ldf.calendar.Utils;
 import com.ldf.calendar.component.CalendarAttr;
@@ -72,12 +75,21 @@ public class ExampleActivity extends AppCompatActivity implements OnSelectDateLi
             public void onClick(View v) {
                 int tag = (int) v.getTag();
                 if (tag == TAG_SHOW) {
+                    Animation animation = new AlphaAnimation(1.0f, 0f);
+                    animation.setDuration(200);
+                    linearLayout.setAnimation(animation);
+                    linearLayout.startAnimation(animation);
                     linearLayout.setVisibility(View.GONE);
                     hideView.setTag(TAG_HIDE);
                 } else if (tag == TAG_HIDE) {
+                    Animation animation = new AlphaAnimation(0f, 1.0f);
+                    animation.setDuration(200);
+                    linearLayout.setAnimation(animation);
+                    linearLayout.startAnimation(animation);
                     linearLayout.setVisibility(View.VISIBLE);
                     hideView.setTag(TAG_SHOW);
                 }
+
             }
         });
 

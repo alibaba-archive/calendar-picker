@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,7 +19,6 @@ import java.util.Date;
 public class Example2Activity extends AppCompatActivity implements PickerListener {
 
     private TextView textViewYearDisplay;
-    private TextView textViewMonthDisplay;
     private View scrollSwitch;
     private TextView backToday;
     private TextView hideView;
@@ -31,7 +32,6 @@ public class Example2Activity extends AppCompatActivity implements PickerListene
 
         scrollSwitch = findViewById(R.id.scroll_switch);
         textViewYearDisplay = (TextView) findViewById(R.id.show_year_view);
-        textViewMonthDisplay = (TextView) findViewById(R.id.show_month_view);
         backToday = (TextView) findViewById(R.id.back_today_button);
         hideView = (TextView) findViewById(R.id.hide_view);
 
@@ -52,6 +52,13 @@ public class Example2Activity extends AppCompatActivity implements PickerListene
             @Override
             public void onClick(View v) {
                 pickerFragment.changeMode();
+            }
+        });
+
+        hideView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickerFragment.setCalendarIsVisible();
             }
         });
     }
