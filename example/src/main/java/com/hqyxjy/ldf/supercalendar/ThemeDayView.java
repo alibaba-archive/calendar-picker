@@ -42,12 +42,11 @@ public class ThemeDayView extends DayView {
         State state = day.getState();
         if (date != null) {
             if (date.equals(today)) {
-                dateTv.setText("今");
                 todayBackground.setVisibility(VISIBLE);
             } else {
-                dateTv.setText(date.day + "");
                 todayBackground.setVisibility(GONE);
             }
+            dateTv.setText(String.valueOf(date.day));
         }
         if (state == State.SELECT) {
             selectedBackground.setVisibility(VISIBLE);

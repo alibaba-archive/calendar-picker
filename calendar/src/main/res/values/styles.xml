@@ -13,8 +13,7 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
         <item name="android:gravity">center</item>
-        <item name="android:textSize">13sp</item>
-        <item name="android:textColor">#ff25adff</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">#A6A6A6</item>
     </style>
-
 </resources>

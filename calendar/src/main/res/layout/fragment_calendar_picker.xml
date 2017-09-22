@@ -5,38 +5,41 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
+        android:id="@+id/week_header"
         android:layout_width="match_parent"
-        android:layout_height="28dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
         android:background="#fff"
         android:orientation="horizontal">
 
         <TextView
             style="@style/weekIndicatorStyle"
-            android:text="日" />
+            android:text="@string/week_header_sunday" />
 
         <TextView
             style="@style/weekIndicatorStyle"
-            android:text="一" />
+            android:text="@string/week_header_monday" />
 
         <TextView
             style="@style/weekIndicatorStyle"
-            android:text="二" />
+            android:text="@string/week_header_tuesday" />
 
         <TextView
             style="@style/weekIndicatorStyle"
-            android:text="三" />
+            android:text="@string/week_header_wednesday" />
 
         <TextView
             style="@style/weekIndicatorStyle"
-            android:text="四" />
+            android:text="@string/week_header_thursday" />
 
         <TextView
             style="@style/weekIndicatorStyle"
-            android:text="五" />
+            android:text="@string/week_header_friday" />
 
         <TextView
             style="@style/weekIndicatorStyle"
-            android:text="六" />
+            android:text="@string/week_header_saturday" />
     </LinearLayout>
 
     <FrameLayout

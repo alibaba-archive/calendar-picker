@@ -2,18 +2,12 @@ package com.hqyxjy.ldf.supercalendar;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.ldf.calendar.Utils;
 import com.ldf.calendar.view.CalendarPickerFragment;
 import com.ldf.calendar.view.PickerListener;
 
-import java.text.DateFormat;
 import java.util.Date;
 
 public class Example2Activity extends AppCompatActivity implements PickerListener {
@@ -58,7 +52,15 @@ public class Example2Activity extends AppCompatActivity implements PickerListene
         hideView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pickerFragment.setCalendarIsVisible();
+                if (pickerFragment.isVisible()) {
+                    getSupportFragmentManager().beginTransaction()
+                        .hide(pickerFragment)
+                        .commit();
+                } else {
+                    getSupportFragmentManager().beginTransaction()
+                        .show(pickerFragment)
+                        .commit();
+                }
             }
         });
     }

@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">SuperCalendar</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="week_header_sunday">日</string>
+    <string name="week_header_monday">一</string>
+    <string name="week_header_tuesday">二</string>
+    <string name="week_header_wednesday">三</string>
+    <string name="week_header_thursday">四</string>
+    <string name="week_header_friday">五</string>
+    <string name="week_header_saturday">六</string>
 </resources>
