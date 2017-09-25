@@ -67,6 +67,31 @@ public class CalendarPickerFragment extends Fragment implements OnSelectDateList
         });
     }
 
+    public void changeViewType(CalendarAttr.CalendarType calendarType) {
+        if (calendarAdapter.getCalendarType() == calendarType) {
+            return;
+        }
+        if (calendarType == CalendarAttr.CalendarType.WEEK) {
+            calendarAdapter.switchToWeek(monthPager.getRowIndex());
+            ViewGroup.LayoutParams containerParams = monthPagerContainer.getLayoutParams();
+            containerParams.height = monthPager.getCellHeight();
+            monthPagerContainer.setLayoutParams(containerParams);
+
+            FrameLayout.LayoutParams childParams = (FrameLayout.LayoutParams) monthPager.getLayoutParams();
+            childParams.topMargin = -monthPager.getTopMovableDistance();
+            monthPager.setLayoutParams(childParams);
+        } else if (calendarType == CalendarAttr.CalendarType.MONTH) {
+            calendarAdapter.switchToMonth();
+            ViewGroup.LayoutParams containerParams = monthPagerContainer.getLayoutParams();
+            containerParams.height = monthPager.getCellHeight() * 6;
+            monthPagerContainer.setLayoutParams(containerParams);
+
+            FrameLayout.LayoutParams childParams = (FrameLayout.LayoutParams) monthPager.getLayoutParams();
+            childParams.topMargin = 0;
+            monthPager.setLayoutParams(childParams);
+        }
+    }
+
     public void changeMode() {
         if (calendarAdapter.getCalendarType() == CalendarAttr.CalendarType.WEEK) {
             calendarAdapter.switchToMonth();
