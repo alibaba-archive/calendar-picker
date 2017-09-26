@@ -30,22 +30,19 @@ public class Calendar extends View {
     private OnAdapterSelectListener onAdapterSelectListener;
     private float touchSlop;
 
-    public Calendar(Context context, OnSelectDateListener onSelectDateListener) {
+    public Calendar(Context context, OnSelectDateListener onSelectDateListener, CalendarAttr.CalendarType calendarType) {
         super(context);
         this.onSelectDateListener = onSelectDateListener;
-        init(context);
-    }
 
-    private void init(Context context) {
         this.context = context;
         touchSlop = Utils.getTouchSlop(context);
-        initAttrAndRenderer();
+        initAttrAndRenderer(calendarType);
     }
 
-    private void initAttrAndRenderer() {
+    private void initAttrAndRenderer(CalendarAttr.CalendarType calendarType) {
         calendarAttr = new CalendarAttr();
         calendarAttr.setWeekArrayType(CalendarAttr.WeekArrayType.Sunday);
-        calendarAttr.setCalendarType(CalendarAttr.CalendarType.MONTH);
+        calendarAttr.setCalendarType(calendarType);
         renderer = new CalendarRenderer(this, calendarAttr, context);
         renderer.setOnSelectDateListener(onSelectDateListener);
     }

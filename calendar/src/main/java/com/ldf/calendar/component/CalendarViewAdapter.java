@@ -2,7 +2,6 @@ package com.ldf.calendar.component;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -49,9 +48,9 @@ public class CalendarViewAdapter extends PagerAdapter {
     private void init(Context context, OnSelectDateListener onSelectDateListener) {
         saveDate(new CalendarDate());
         //初始化的种子日期为今天
-        seedDate = new CalendarDate().modifyDay(1);
+        seedDate = new CalendarDate();
         for (int i = 0; i < 3; i++) {
-            Calendar calendar = new Calendar(context, onSelectDateListener);
+            Calendar calendar = new Calendar(context, onSelectDateListener, calendarType);
             calendar.setOnAdapterSelectListener(new OnAdapterSelectListener() {
                 @Override
                 public void cancelSelectState() {
@@ -96,11 +95,12 @@ public class CalendarViewAdapter extends PagerAdapter {
             calendar.showDate(current);
         } else if (calendarType == CalendarAttr.CalendarType.WEEK) {
             CalendarDate current = seedDate.modifyWeek(position - MonthPager.CURRENT_DAY_INDEX);
-            if (weekArrayType == 1) {
-                calendar.showDate(Utils.getSunday(current));
-            } else {
-                calendar.showDate(Utils.getSaturday(current));
-            }//每周的种子日期为这一周的最后一天
+            calendar.showDate(current);
+//            if (weekArrayType == 1) {
+//                calendar.showDate(Utils.getSaturday(current));
+//            } else {
+//                calendar.showDate(Utils.getSunday(current));
+//            }//每周的种子日期为这一周的最后一天
             calendar.updateWeek(rowCount);
         }
         if (container.getChildCount() == calendars.size()) {
@@ -202,21 +202,23 @@ public class CalendarViewAdapter extends PagerAdapter {
             Calendar v2 = calendars.get((currentPosition - 1) % 3);
             v2.switchCalendarType(CalendarAttr.CalendarType.WEEK);
             CalendarDate last = seedDate.modifyWeek(-1);
-            if (weekArrayType == 1) {
-                v2.showDate(Utils.getSunday(last));
-            } else {
-                v2.showDate(Utils.getSaturday(last));
-            }//每周的种子日期为这一周的最后一天
+            v2.showDate(last);
+//            if (weekArrayType == 1) {
+//                v2.showDate(Utils.getSaturday(last));
+//            } else {
+//                v2.showDate(Utils.getSunday(last));
+//            }//每周的种子日期为这一周的最后一天
             v2.updateWeek(rowIndex);
 
             Calendar v3 = calendars.get((currentPosition + 1) % 3);
             v3.switchCalendarType(CalendarAttr.CalendarType.WEEK);
             CalendarDate next = seedDate.modifyWeek(1);
-            if (weekArrayType == 1) {
-                v3.showDate(Utils.getSunday(next));
-            } else {
-                v3.showDate(Utils.getSaturday(next));
-            }//每周的种子日期为这一周的最后一天
+            v3.showDate(next);
+//            if (weekArrayType == 1) {
+//                v3.showDate(Utils.getSaturday(next));
+//            } else {
+//                v3.showDate(Utils.getSunday(next));
+//            }//每周的种子日期为这一周的最后一天
             v3.updateWeek(rowIndex);
         }
     }
@@ -232,20 +234,24 @@ public class CalendarViewAdapter extends PagerAdapter {
 
             Calendar v2 = calendars.get((currentPosition - 1) % 3);
             CalendarDate last = seedDate.modifyWeek(-1);
-            if (weekArrayType == 1) {
-                v2.showDate(Utils.getSunday(last));
-            } else {
-                v2.showDate(Utils.getSaturday(last));
-            }//每周的种子日期为这一周的最后一天
+            v2.showDate(last);
+//            if (weekArrayType == 1) {
+//                CalendarDate d = Utils.getSaturday(last);
+//                v2.showDate(d);
+//            } else {
+//                v2.showDate(Utils.getSunday(last));
+//            }//每周的种子日期为这一周的最后一天
             v2.updateWeek(rowCount);
 
             Calendar v3 = calendars.get((currentPosition + 1) % 3);
             CalendarDate next = seedDate.modifyWeek(1);
-            if (weekArrayType == 1) {
-                v3.showDate(Utils.getSunday(next));
-            } else {
-                v3.showDate(Utils.getSaturday(next));
-            }//每周的种子日期为这一周的最后一天
+            v3.showDate(next);
+//            if (weekArrayType == 1) {
+//                CalendarDate d = Utils.getSaturday(next);
+//                v3.showDate(d);
+//            } else {
+//                v3.showDate(Utils.getSunday(next));
+//            }//每周的种子日期为这一周的最后一天
             v3.updateWeek(rowCount);
         } else {
             MonthPager.CURRENT_DAY_INDEX = currentPosition;

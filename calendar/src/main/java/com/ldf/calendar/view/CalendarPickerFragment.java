@@ -52,11 +52,20 @@ public class CalendarPickerFragment extends Fragment implements OnSelectDateList
         calendarAdapter = new CalendarViewAdapter(
             getContext(),
             this,
-            CalendarAttr.CalendarType.MONTH,
+            CalendarAttr.CalendarType.WEEK,
             customDayView);
         calendarAdapter.setPickerListener(this);
-        monthPager.setAdapter(calendarAdapter);
         monthPager.setViewHeight(Utils.dpi2px(getContext(), 270));
+        monthPager.setAdapter(calendarAdapter);
+
+        ViewGroup.LayoutParams containerParams = monthPagerContainer.getLayoutParams();
+        containerParams.height = monthPager.getCellHeight();
+        monthPagerContainer.setLayoutParams(containerParams);
+
+        FrameLayout.LayoutParams childParams = (FrameLayout.LayoutParams) monthPager.getLayoutParams();
+        childParams.topMargin = -monthPager.getTopMovableDistance();
+        monthPager.setLayoutParams(childParams);
+
         monthPager.setCurrentItem(MonthPager.CURRENT_DAY_INDEX);
         monthPager.setPageTransformer(false, new ViewPager.PageTransformer() {
             @Override
