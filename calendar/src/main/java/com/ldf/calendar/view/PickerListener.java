@@ -4,4 +4,6 @@ import java.util.Date;
 
 public interface PickerListener {
     void onDateFocused(Date date);
+
+    void onDateSelectedByUser(Date date);
 }

@@ -161,9 +161,16 @@ public class CalendarPickerFragment extends Fragment implements OnSelectDateList
     }
 
     @Override
+    public void onDateSelectedByUser(Date date) {
+        if (pickerListener != null) {
+            pickerListener.onDateSelectedByUser(date);
+        }
+    }
+
+    @Override
     public void onSelectDate(CalendarDate date) {
         if (pickerListener != null) {
-            pickerListener.onDateFocused(Utils.toDate(date));
+            pickerListener.onDateSelectedByUser(Utils.toDate(date));
         }
     }
 
